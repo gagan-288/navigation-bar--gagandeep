@@ -1,0 +1,152 @@
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  min-height: 100vh;
+  padding-top: 80px;
+  font-family: "Segoe UI", sans-serif;
+  color: white;
+}
+
+/* Content */
+.content {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+/* iOS Glass Navbar */
+.ios-glass {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 1000;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 998;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hamburger */
+.hamburger {
+  width: 30px;
+  cursor: pointer;
+  display: none;
+  z-index: 1001;
+}
+
+.hamburger span {
+  height: 3px;
+  background: white;
+  display: block;
+  margin: 6px 0;
+  transition: 0.3s;
+}
+
+/* Hamburger Animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* iOS Bottom Sheet Menu */
+.ios-menu {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 55%;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-radius: 25px 25px 0 0;
+  padding: 20px;
+  transition: bottom 0.45s ease, opacity 0.45s ease;
+  opacity: 0;
+  z-index: 999;
+}
+
+.ios-menu.active {
+  bottom: 0;
+  opacity: 1;
+}
+
+/* Drag Handle */
+.drag-handle {
+  width: 45px;
+  height: 5px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 10px;
+  margin: 10px auto 25px;
+}
+
+/* Menu Items */
+.ios-menu ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.ios-menu li {
+  margin: 18px 0;
+}
+
+.ios-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* Desktop View */
+@media (min-width: 801px) {
+
+  .hamburger {
+    display: none;
+  }
+
+  .ios-menu {
+    position: static;
+    height: auto;
+    background: transparent;
+    backdrop-filter: none;
+    opacity: 1;
+    padding: 0;
+    transition: none;
+  }
+
+  .ios-menu ul {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-end;
+  }
+
+  .drag-handle,
+  .overlay {
+    display: none;
+  }
+}
+
+/* Mobile View */
+@media (max-width: 800px) {
+  .hamburger {
+    display: block;
+  }
+}
